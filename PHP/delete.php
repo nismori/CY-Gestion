@@ -1,4 +1,4 @@
-<?php
+<?php 
 $servername = "localhost";
 $username = "root";
 $password = "cytech0001";  // Remplace par ton mot de passe
