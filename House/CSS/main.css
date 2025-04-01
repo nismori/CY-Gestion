@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* En-tête */
+#entete {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+/* Introduction */
+#introduction {
+    margin: 20px 0;
+}
+
+/* Lien utile */
+#lien-utile {
+    margin: 20px 0;
+}
+
+/* Identité */
+#Identité {
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#Identité h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#Identité ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#Identité li {
+    margin-bottom: 8px;
+}
+
+/* Formulaire */
+#formulaire {
+    background-color: #fff;
+    padding: 20px;
+    margin: 30px auto;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#formulaire h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
