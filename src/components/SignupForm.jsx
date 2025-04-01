@@ -10,8 +10,8 @@ export function SignupFormDemo() {
     console.log("Form submitted");
   };
   return (
-    <div className="w-full max-w-md p-4 mx-auto bg-white rounded-none shadow-input md:rounded-2xl md:p-8 dark:bg-black">
-      <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+    <div className="w-full max-w-md p-4 mx-auto bg-white rounded-none shadow-input md:rounded-2xl relative translate-y-2/3 top-50% md:p-8 dark:bg-black">
+      <h2 className="flex justify-center mx-auto text-xl font-bold text-neutral-800 dark:text-neutral-200">
         Sign in
       </h2>
       <form className="my-8" onSubmit={handleSubmit}>

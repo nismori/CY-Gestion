@@ -3,6 +3,8 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "../../utils/cn";
 import { Link } from "react-router-dom";
 import {motion} from 'framer-motion';
+import { PlaceholdersAndVanishInputDemo } from "./SearchBar";
+
 
 export function NavbarDemo() {
   return (
@@ -16,7 +18,7 @@ function Navbar({ className }) {
   const [active, setActive] = useState(null);
   return (
     <div
-      className={cn("fixed inset-x-0 max-w-3xl mt-5 mx-auto z-50", className)}
+      className={cn("fixed inset-x-0 max-w-5xl mt-5 mx-auto z-50 items-center justify-between", className)}
     >
       <Menu setActive={setActive}>
       <MenuItem setActive={setActive} active={active} item="Accueil">
@@ -35,13 +37,11 @@ function Navbar({ className }) {
             <HoveredLink to="/contact">Contact</HoveredLink>
           </div>
         </MenuItem>
-      <motion.p
-        transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
-      >
-        
-      </motion.p>
+        <div className="flex justify-center flex-1 ml-4">
+          <PlaceholdersAndVanishInputDemo/>
+        </div>
+
       </Menu>
     </div>
   );
-}
+} 
