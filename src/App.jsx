@@ -1,9 +1,11 @@
+import Navbar from "./components/Navbar"
+
 function App() {
 
 
   return (
-    <div className="mx-auto bg-red-900 text-white">
-        coucou
+    <div className="w-screen h-screen bg-gray-800">
+      <Navbar/>
     </div>
   )
 }
