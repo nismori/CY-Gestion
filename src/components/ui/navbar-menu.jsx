@@ -18,38 +18,37 @@ export const MenuItem = ({
   item,
   children
 }) => {
+  console.log('active:', active);
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative">
+    <div onMouseEnter={() => setActive(item)}>
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
       >
         {item}
       </motion.p>
-      {active !== null && (
+      {active === item && (
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={transition}
         >
-          {active === item && (
-            <div
-              className="absolute top-[calc(100% + 1.2rem)] left-1/2 transform -translate-x-1/2 pt-4"
+          <div
+            className="absolute top-[calc(100% + 1.2rem)] left-1/2 transform -translate-x-1/2 pt-4"
+          >
+            <motion.div
+              transition={transition}
+              layoutId="active"
+              className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
             >
               <motion.div
-                transition={transition}
-                layoutId="active"
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                layout
+                className="h-full p-4 w-max"
               >
-                <motion.div
-                  layout
-                  className="h-full p-4 w-max"
-                >
-                  {children}
-                </motion.div>
+                {children}
               </motion.div>
-            </div>
-          )}
+            </motion.div>
+          </div>
         </motion.div>
       )}
     </div>
@@ -104,7 +103,7 @@ export const HoveredLink = ({
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black"
+      className="text-neutral-700 dark:text-neutral-200 hover:text-neutral-400"
     >
       {children}
     </Link>

@@ -1,8 +1,9 @@
-import { ShootingStarsAndStarsBackgroundDemo } from "./components/background";
-import { NavbarDemo } from "./components/Navbar";
-import React from "react";
+import React from 'react'
+import { ShootingStarsAndStarsBackgroundDemo } from "./background"
+import {NavbarDemo} from "./Navbar"
 
-function App() {
+
+function LogIn() {
   return (
     <div>
       <main className="relative flex flex-col items-center justify-center px-5 mx-auto bg-black-100 sm:px-10 overflow-clip ">
@@ -12,7 +13,7 @@ function App() {
         </div>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default LogIn
