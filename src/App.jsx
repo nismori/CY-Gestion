@@ -1,12 +1,16 @@
-import Navbar from "./components/Navbar"
+import { ShootingStarsAndStarsBackgroundDemo } from "./components/background"
+import {NavbarDemo} from "./components/Navbar"
 
 function App() {
 
 
   return (
-    <div className="w-screen h-screen bg-gray-800">
-      <Navbar/>
+    <main className="relative flex flex-col items-center justify-center px-5 mx-auto bg-black-100 sm:px-10 overflow-clip ">
+    <div className="h-screen bg-neutral-900">
+      <ShootingStarsAndStarsBackgroundDemo/>
+      <NavbarDemo/>
     </div>
+    </main>
   )
 }
 
