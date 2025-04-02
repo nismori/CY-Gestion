@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'profil',
+    'profil'
 ]
 
 MIDDLEWARE = [
@@ -78,10 +78,7 @@ WSGI_APPLICATION = 'House.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'USER': 'root',  
-        'PASSWORD': '91386',  
-        'HOST': 'localhost', 
-        'PORT': '3306',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
