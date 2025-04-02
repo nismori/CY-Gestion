@@ -24,4 +24,6 @@ urlpatterns = [
     path("index/", test),
     path("profil/", profil),
     path("profil2/", autre_profil),
+    path("",include("profil.urls")),
+    path("",include("profil.urls")),
 ]

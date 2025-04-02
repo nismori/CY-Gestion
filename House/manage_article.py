@@ -34,4 +34,4 @@ def delete_all_articles():
 
 create_article()
 list_articles()
-delete_all_articles()
+#delete_all_articles()
