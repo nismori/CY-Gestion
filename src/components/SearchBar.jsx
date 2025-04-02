@@ -2,9 +2,9 @@ import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 
 export function PlaceholdersAndVanishInputDemo() {
   const placeholders = [
-    "Quelles sont les horaires de bus ?",
-    "Quelle musée est ouvert aujourd'hui ?",
-    "Quand est le prochain concert ?"
+    "Quels sont les aliments restants dans le frigo ?",
+    "Les volets sont ils fermés ?",
+    "Le lave vaisselle est il vide ?"
   ];
 
   const handleChange = (e) => {

@@ -40,7 +40,6 @@ function Navbar({ className }) {
         <div className="flex justify-center flex-1 ml-4">
           <PlaceholdersAndVanishInputDemo/>
         </div>
-
       </Menu>
     </div>
   );

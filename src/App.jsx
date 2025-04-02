@@ -1,6 +1,6 @@
 import { ShootingStarsAndStarsBackgroundDemo } from "./components/background";
 import Hero from "./components/Hero";
-import { NavbarDemo } from "./components/Navbar";
+import { NavbarDemo } from "./components/NavBar";
 import React from "react";
 
 function App() {

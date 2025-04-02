@@ -1,6 +1,7 @@
 import React from 'react'
 import { ShootingStarsAndStarsBackgroundDemo } from "./background"
-import {NavbarDemo} from "./Navbar"
+import {NavbarDemo} from "./NavBar"
+import { LoginFormDemo } from './LoginForm'
 
 
 function LogIn() {
@@ -10,6 +11,7 @@ function LogIn() {
         <div className="h-screen bg-neutral-900">
           <ShootingStarsAndStarsBackgroundDemo />
           <NavbarDemo />
+          <LoginFormDemo/>
         </div>
       </main>
     </div>
