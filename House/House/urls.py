@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import *
 from .views import *
 from profil.views import *
+from appareil.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('profil/',ProfilView.as_view(), name="anything"),
-    path("profil2/", profil),
+    path('appareil/',AppareilView.as_view(), name="anything"),
+
 ]
