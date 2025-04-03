@@ -1,10 +1,22 @@
 from django.db import models
 
-class Article(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+class Profil(models.Model):
+    pseudo = models.CharField(max_length=30,default="error")
+    age = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.title
+    HOMME = 'H'
+    FEMME = 'F'
+    AUTRE = 'A'
+    SEXE_CHOICES = [
+        (HOMME, 'Homme'),
+        (FEMME, 'Femme'),
+        (AUTRE, 'Autre'),
+    ]
+    sexe = models.CharField(max_length=30,default="error")
+
+    date_de_naissance = models.DateField(default="1900-01-01")
+    type_de_membre = models.CharField(max_length=30,default="error")
+    photo = models.ImageField(default="error")
+    prenom = models.CharField(max_length=30,default="error")
+    nom = models.CharField(max_length=30,default="error")
+    mot_de_passe = models.CharField(max_length=50,default="error")
