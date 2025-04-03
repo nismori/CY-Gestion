@@ -21,6 +21,6 @@ from profil.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('',ProfilView.as_view(), name="anything"),
-    path("profil/", profil),
+    path('profil/',ProfilView.as_view(), name="anything"),
+    path("profil2/", profil),
 ]
