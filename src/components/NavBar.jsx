@@ -18,7 +18,7 @@ function Navbar({ className }) {
   const [active, setActive] = useState(null);
   return (
     <div
-      className={cn("fixed inset-x-0 max-w-5xl mt-5 mx-auto z-50 items-center justify-between", className)}
+      className={cn("fixed inset-x-0 max-w-5xl  mx-auto z-50 items-center justify-between", className)}
     >
       <Menu setActive={setActive}>
       <MenuItem setActive={setActive} active={active} item="Accueil">

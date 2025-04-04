@@ -18,7 +18,7 @@ export const MenuItem = ({
   item,
   children
 }) => {
-  console.log('active:', active);
+
   return (
     <div onMouseEnter={() => setActive(item)}>
       <motion.p

@@ -28,7 +28,7 @@ export function LoginFormDemo() {
           <p className="max-w-sm mt-2 text-sm text-neutral-600 dark:text-neutral-300">
             Ou bien vous n'avez pas encore de
              <span className="text-black hover:opacity-[0.9] dark:text-neutral-400 underline mx-1.5">
-                <Link to={"/connexion"}>compte</Link>
+                <Link to={"/inscription"}>compte</Link>
             </span>?
           </p>
         </LabelInputContainer>
