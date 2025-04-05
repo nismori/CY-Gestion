@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import *
 
 class Profil(models.Model):
+    email = models.EmailField(max_length=200,unique=True,default="error")
     pseudo = models.CharField(max_length=30,default="error")
     age = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(120)],default=0)
     HOMME = 'H'

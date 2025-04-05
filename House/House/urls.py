@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import *
 from .views import *
-from profil.views import *
-from appareil.views import *
+from Profil.views import *
+from Appareil.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
