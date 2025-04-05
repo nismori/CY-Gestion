@@ -79,8 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'House.wsgi.application'
-
-
+AUTH_USER_MODEL = 'Profil.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

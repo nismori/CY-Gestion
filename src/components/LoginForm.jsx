@@ -5,9 +5,39 @@ import { cn } from "../../utils/cn";
 import { Link } from "react-router-dom";
 
 export function LoginFormDemo() {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+  
+    const email = e.target.email.value;
+    const mot_de_passe = e.target.password.value;
+  
+    const credentials = {
+      email: email,
+      mot_de_passe: mot_de_passe,
+    };
+  
+    try {
+      const response = await fetch("http://127.0.0.1:8000/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Connecté :", data);
+        // tu peux stocker un token ici si le backend en retourne un
+        localStorage.setItem("user", JSON.stringify(data));
+        // Redirige ou met à jour l'état connecté
+      } else {
+        console.error("Erreur d'authentification :", data.detail || data.message);
+      }
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+    }
   };
   return (
     <div className="w-full max-w-md p-4 mx-auto bg-white rounded-none shadow-input md:rounded-2xl relative translate-y-2/3 top-50% md:p-8 dark:bg-black">
@@ -17,11 +47,11 @@ export function LoginFormDemo() {
       <form className="my-8" onSubmit={handleSubmit}>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Addresse e-mail</Label>
-          <Input id="email" placeholder="adresse@mail.com" type="email" />
+          <Input id="email" name="email" placeholder="adresse@mail.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Mot de passe</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input id="password" name="password" placeholder="••••••••" type="password" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-8">
           <Label htmlFor="twitterpassword"></Label>

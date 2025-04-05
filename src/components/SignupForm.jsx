@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 👈 import du hook
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "../../utils/cn";
 import { Link } from "react-router-dom";
 
 export function SignupFormDemo() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     prenom: "",
     nom: "",
@@ -33,7 +36,7 @@ export function SignupFormDemo() {
     reader.onloadend = () => {
       setFormData((prev) => ({
         ...prev,
-        photo: reader.result // Base64 string
+        photo: reader.result
       }));
     };
     reader.readAsDataURL(file);
@@ -43,7 +46,7 @@ export function SignupFormDemo() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/profil/", {
+      const response = await fetch("http://127.0.0.1:8000/inscription/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,13 +54,17 @@ export function SignupFormDemo() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-      console.log("Réponse du serveur :", data);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Réponse du serveur :", data);
+        navigate("/connexion");
+      } else {
+        console.error("Erreur lors de l’inscription :", response.status);
+      }
     } catch (error) {
       console.error("Erreur lors de l’envoi :", error);
     }
   };
-
   return (
     <div className="relative w-full max-w-md p-4 mx-auto bg-white rounded-none shadow-input md:rounded-2xl translate-y-[30%] md:p-8 dark:bg-black">
       <h2 className="flex justify-center mx-auto text-xl font-bold text-neutral-800 dark:text-neutral-200">
