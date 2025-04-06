@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from django.shortcuts import *
+from rest_framework.permissions import IsAuthenticated
+
 
 
 class ProfilView(generics.ListCreateAPIView):
@@ -118,3 +120,10 @@ def afficherProfil(request):
     # Récupère tous les profils
     profils = Profil.objects.all()
     return render(request, 'profils.html', {'profils': profils})
+
+
+class LogedView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": f"Bienvenue {request.user.email} !"})

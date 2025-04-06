@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function SetUserByEmail() {
+
+export default function SetUserByEmail () {
   const [email, setEmail] = useState("");
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
@@ -102,5 +103,3 @@ function SetUserByEmail() {
     </div>
   );
 }
-
-export default SetUserByEmail;

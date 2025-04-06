@@ -19,6 +19,10 @@ from django.urls import *
 from .views import *
 from Profil.views import *
 from Appareil.views import *
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +33,7 @@ urlpatterns = [
     path('showProfil/', afficherProfil),
     path('showAppareil/', afficherAppareil),
     path('api/get_user_by_email/', GetUserByEmailView.as_view(), name='get_user_by_email'),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
 ]

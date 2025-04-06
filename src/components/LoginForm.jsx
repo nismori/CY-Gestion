@@ -31,10 +31,11 @@ export function LoginFormDemo() {
 
       if (response.ok) {
         console.log("Connecté :", data);
-        // Stocker un token ou les données utilisateur ici
-        localStorage.setItem("user", JSON.stringify(data));
-        // Rediriger l'utilisateur vers la page loged après connexion réussie
-        navigate("/loged");
+  
+        // Supposons que ton backend retourne le token dans data.access ou data.token
+        localStorage.setItem("accessToken", data.access); // ou data.token selon le nom
+      
+        navigate("/loged"); // Redirige vers la page protégée 
       } else {
         console.error("Erreur d'authentification :", data.detail || data.message);
       }
