@@ -1,1 +1,1 @@
-export const description = "description du site";
+export const description = "CY-Gestion est une application innovante qui permet de gérer et de contrôler votre maison intelligente de manière efficace et pratique, conçue pour simplifier votre vie quotidienne.";

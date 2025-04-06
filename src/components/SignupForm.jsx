@@ -58,11 +58,9 @@ export function SignupFormDemo() {
         const data = await response.json();
         console.log("Réponse du serveur :", data);
         navigate("/connexion");
-      } else {
-        console.error("Erreur lors de l’inscription :", response.status);
       }
     } catch (error) {
-      console.error("Erreur lors de l’envoi :", error);
+      console.error("Une erreur s'est produite lors de l'inscription :", error);
     }
   };
   return (

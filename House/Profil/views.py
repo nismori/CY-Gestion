@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import *
 from django.shortcuts import *
 from rest_framework.permissions import IsAuthenticated
-
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class ProfilView(generics.ListCreateAPIView):
@@ -50,16 +50,37 @@ class LoginView(APIView):
         email = request.data.get("email")
         mot_de_passe = request.data.get("mot_de_passe")
 
+        # Ajout de prints pour déboguer
+        print(f"Email reçu : {email}")
+        print(f"Mot de passe reçu : {mot_de_passe}")
+
         try:
+            # Vérifier si l'utilisateur existe
             profil = Profil.objects.get(email=email)
+            print(f"Utilisateur trouvé : {profil.email}")
+
+            # Vérification du mot de passe
             if profil.check_mot_de_passe(mot_de_passe):
-                # Retourner une réponse appropriée, par exemple un token JWT ou un message de succès
-                return Response({"message": "Login réussi"}, status=200)
+                print("Mot de passe correct")
+                
+                # Créer un token JWT
+                refresh = RefreshToken.for_user(profil)
+                access_token = str(refresh.access_token)
+                refresh_token = str(refresh)
+
+                # Retourner les tokens dans la réponse
+                print("Tokens générés avec succès")
+                return Response({
+                    "message": "Login réussi",
+                    "access": access_token,
+                    "refresh": refresh_token
+                }, status=200)
             else:
+                print("Mot de passe incorrect")
                 return Response({"message": "Mot de passe incorrect"}, status=400)
         except Profil.DoesNotExist:
+            print(f"Utilisateur non trouvé pour l'email : {email}")
             return Response({"message": "Utilisateur non trouvé"}, status=400)
-        
 
 class GetUserByEmailView(APIView):
     permission_classes = [AllowAny]
@@ -121,9 +142,9 @@ def afficherProfil(request):
     profils = Profil.objects.all()
     return render(request, 'profils.html', {'profils': profils})
 
-
 class LogedView(APIView):
-    permission_classes = [IsAuthenticated]
-
     def get(self, request):
-        return Response({"message": f"Bienvenue {request.user.email} !"})
+        print("Requête reçue sur /loged/")
+        print("Token : ", request.headers.get("Authorization"))
+        # ton code ici
+        return Response({"message": "Token validé"}, status=status.HTTP_200_OK)

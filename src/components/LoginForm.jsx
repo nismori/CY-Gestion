@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "../../utils/cn";
@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; 
 
 export function LoginFormDemo() {
+  const [errorMessage, setErrorMessage] = useState(""); // Ajout de l'état pour gérer l'erreur
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Réinitialiser l'erreur à chaque soumission
 
     const email = e.target.email.value;
     const mot_de_passe = e.target.password.value;
@@ -29,21 +31,19 @@ export function LoginFormDemo() {
       });
 
       const data = await response.json();
-      console.log("Réponse du backend :", data); // <-- debug
-
       if (response.ok) {
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
-        console.log("Token stocké avec succès");
 
         navigate("/loged");
       } else {
-        console.error("Erreur d'authentification :", data.detail || data.message);
+        setErrorMessage("Identifiants incorrects ou utilisateur introuvable");
       }
     } catch (error) {
-      console.error("Erreur réseau :", error);
+      setErrorMessage("Erreur réseau. Veuillez réessayer.");
     }
   };
+
   return (
     <div className="w-full max-w-md p-4 mx-auto bg-white rounded-none shadow-input md:rounded-2xl relative translate-y-2/3 top-50% md:p-8 dark:bg-black">
       <h2 className="flex justify-center mx-auto text-xl font-bold text-neutral-800 dark:text-neutral-200">
@@ -58,6 +58,10 @@ export function LoginFormDemo() {
           <Label htmlFor="password">Mot de passe</Label>
           <Input id="password" name="password" placeholder="••••••••" type="password" />
         </LabelInputContainer>
+        {errorMessage && (
+          <div className="mt-2 text-sm text-red-600">{errorMessage}</div>
+        )}
+
         <LabelInputContainer className="mb-8">
           <Label htmlFor="twitterpassword"></Label>
           <p className="max-w-sm mt-2 text-sm text-neutral-600 dark:text-neutral-300">

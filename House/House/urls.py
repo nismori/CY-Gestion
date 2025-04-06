@@ -37,5 +37,5 @@ urlpatterns = [
     path('inscription/', InscriptionView.as_view(), name='inscription'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
+    path('loged/', LogedView.as_view(), name='loged'),
 ]

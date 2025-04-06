@@ -41,7 +41,7 @@ function Profil() {
   <>
     <ShootingStarsAndStarsBackgroundDemo />
           <NavbarLogedDemo />
-    <div className="max-w-3xl p-6 mx-auto bg-white rounded-lg shadow-lg mt-[20vh] dark:bg-gray-800">
+    <div className="max-w-3xl p-6 mx-auto bg-white rounded-lg shadow-lg mt-[20vh] dark:bg-gray-950">
       <h1 className="mb-6 text-2xl font-bold text-center text-gray-800 dark:text-white">Consultez un profil avec son adresse mail</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,7 +68,7 @@ function Profil() {
       {error && <p className="mt-4 text-lg text-center text-red-500">{error}</p>}
 
       {userData && (
-        <div className="p-6 mt-6 bg-gray-100 rounded-lg shadow-md dark:bg-gray-700">
+        <div className="p-6 mt-6 bg-gray-100 rounded-lg shadow-md dark:bg-gray-950">
           <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-white">Utilisateur trouvé :</h2>
           <div className="space-y-3">
             <p className="text-lg text-red-600"><strong className="text-gray-700 dark:text-white">Email : </strong> {userData.email}</p>

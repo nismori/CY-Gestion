@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShootingStarsAndStarsBackgroundDemo } from "./background";
 import { NavbarLogedDemo } from "./NavBarLoged";
+import { Hero } from "./Hero";
 
 export default function Loged() {
-  const navigate = useNavigate();
+ /* const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -14,10 +16,9 @@ export default function Loged() {
       return;
     }
 
-    // Vérifie que le token est valide en appelant la vue protégée
-    const verifyToken = async () => {
+    const fetchUserData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/loged/", {
+        const response = await fetch("http://127.0.0.1:8000/user/", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -26,24 +27,25 @@ export default function Loged() {
 
         const data = await response.json();
         if (response.ok) {
-          console.log("Accès autorisé :", data.message);
+          setUserName(data.user_name);
         } else {
-          console.error("Token invalide, redirection...");
+          console.error("Erreur lors de la récupération des données utilisateur");
           navigate("/connexion");
         }
       } catch (error) {
-        console.error("Erreur lors de la vérification du token :", error);
+        console.error("Erreur lors de la récupération des données utilisateur :", error);
         navigate("/connexion");
       }
     };
 
-    verifyToken();
+    fetchUserData();
   }, [navigate]);
-
+*/
   return (
     <div className="relative min-h-screen bg-black-100">
-      <ShootingStarsAndStarsBackgroundDemo />
+      <ShootingStarsAndStarsBackgroundDemo showCyGestion={1} />
       <NavbarLogedDemo />
+      <Hero /*userName={userName}*/ />
     </div>
   );
 }
