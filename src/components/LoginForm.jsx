@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export function LoginFormDemo() {
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,14 +29,14 @@ export function LoginFormDemo() {
       });
 
       const data = await response.json();
+      console.log("Réponse du backend :", data); // <-- debug
 
       if (response.ok) {
-        console.log("Connecté :", data);
-  
-        // Supposons que ton backend retourne le token dans data.access ou data.token
-        localStorage.setItem("accessToken", data.access); // ou data.token selon le nom
-      
-        navigate("/loged"); // Redirige vers la page protégée 
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        console.log("Token stocké avec succès");
+
+        navigate("/loged");
       } else {
         console.error("Erreur d'authentification :", data.detail || data.message);
       }

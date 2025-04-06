@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ShootingStarsAndStarsBackgroundDemo } from "./background";
+import { NavbarLogedDemo } from "./NavBarLoged";
 
 function Profil() {
   const [email, setEmail] = useState("");  // Email de l'utilisateur
@@ -36,7 +38,10 @@ function Profil() {
   };
 
   return (
-    <div className="max-w-3xl p-6 mx-auto bg-white rounded-lg shadow-lg dark:bg-gray-800">
+  <>
+    <ShootingStarsAndStarsBackgroundDemo />
+          <NavbarLogedDemo />
+    <div className="max-w-3xl p-6 mx-auto bg-white rounded-lg shadow-lg mt-[20vh] dark:bg-gray-800">
       <h1 className="mb-6 text-2xl font-bold text-center text-gray-800 dark:text-white">Consultez un profil avec son adresse mail</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -78,6 +83,7 @@ function Profil() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

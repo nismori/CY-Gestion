@@ -33,7 +33,9 @@ urlpatterns = [
     path('showProfil/', afficherProfil),
     path('showAppareil/', afficherAppareil),
     path('api/get_user_by_email/', GetUserByEmailView.as_view(), name='get_user_by_email'),
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('inscription/', InscriptionView.as_view(), name='inscription'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
 ]

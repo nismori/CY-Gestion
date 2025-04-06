@@ -6,8 +6,8 @@ import App from './App';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Loged from './components/Loged';
-import GetUserByEmail from './components/GetUserByEmail';
-import SetUserByEmail from './components/SetUserByEmail';
+import Profil from './components/Profil';
+
 
 
 
@@ -17,9 +17,8 @@ const router = createBrowserRouter([
   {path: "/connexion", element: <LogIn />},
   {path: "/inscription", element: <SignUp />},
   {path: "/contact", element: <App />},
-  {path: "/loged", element: <Loged />},
-  {path: "/profil", element: <GetUserByEmail/>},
-  {path: "/setprofil", element: <SetUserByEmail/>},
+  {path: "/profil", element: <Profil/>},
+  {path: "/loged", element: <Loged/>},
 ]);
 
 createRoot(document.getElementById('root')).render(

@@ -6,7 +6,7 @@ import { SignupFormDemo } from "./SignupForm";
 export default function Signup() {
   return (
     <div className="relative min-h-screen bg-black-100">
-      <ShootingStarsAndStarsBackgroundDemo />
+      <ShootingStarsAndStarsBackgroundDemo showCyGestion={1} />
       <NavbarDemo />
       <div className="flex items-center justify-center min-h-screen">
         <SignupFormDemo />
