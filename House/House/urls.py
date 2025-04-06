@@ -27,5 +27,6 @@ urlpatterns = [
     path('', include('Profil.urls')),
     path('showProfil/', afficherProfil),
     path('showAppareil/', afficherAppareil),
+    path('api/get_user_by_email/', GetUserByEmailView.as_view(), name='get_user_by_email'),
     
 ]
