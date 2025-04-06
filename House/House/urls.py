@@ -21,8 +21,11 @@ from Profil.views import *
 from Appareil.views import *
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("",default),
+    path('admin/', admin.site.urls),
+    path('',default),
     path('appareil/',AppareilView.as_view(), name="anything"),  
     path('', include('Profil.urls')),
+    path('showProfil/', afficherProfil),
+    path('showAppareil/', afficherAppareil),
+    
 ]

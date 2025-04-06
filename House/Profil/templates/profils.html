@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Profils</title>
+</head>
+<body>
+    <h1>Liste des Profils</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Sexe</th>
+                <th>Date de naissance</th>
+                <th>Type de membre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profil in profils %}
+            <tr>
+                <td>{{ profil.pseudo }}</td>
+                <td>{{ profil.email }}</td>
+                <td>{{ profil.age }}</td>
+                <td>{{ profil.get_sexe_display }}</td>
+                <td>{{ profil.date_de_naissance }}</td>
+                <td>{{ profil.type_de_membre }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

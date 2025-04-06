@@ -3,9 +3,8 @@ from .models import *
 from .serializer import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-from django.contrib.auth.hashers import check_password
-
+from rest_framework.permissions import *
+from django.shortcuts import *
 
     
 class InscriptionView(APIView):
@@ -28,6 +27,7 @@ class InscriptionView(APIView):
         
         return Response({"message": "Inscription réussie."}, status=201)
 
+
 class LoginView(APIView):
     permission_classes = [AllowAny]
 
@@ -44,3 +44,9 @@ class LoginView(APIView):
                 return Response({"message": "Mot de passe incorrect"}, status=400)
         except Profil.DoesNotExist:
             return Response({"message": "Utilisateur non trouvé"}, status=400)
+
+
+def afficherProfil(request):
+    # Récupère tous les profils
+    profils = Profil.objects.all()
+    return render(request, 'profils.html', {'profils': profils})

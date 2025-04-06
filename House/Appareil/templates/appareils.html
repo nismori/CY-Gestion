@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Profils</title>
+</head>
+<body>
+    <h1>Liste des Profils</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>nom</th>
+                <th>marque</th>
+                <th>type</th>
+                <th>etat</th>
+                <th>etat_de_batterie</th>
+                <th>connectivite</th>
+                <th>temperature</th>
+                <th>volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appareil in appareils %}
+            <tr>
+                <td>{{ appareil.nom }}</td>
+                <td>{{ apparei.marque }}</td>
+                <td>{{ appareil.type }}</td>
+                <td>{{ appareil.etat }}</td>
+                <td>{{ appareil.etat_de_batterie }}</td>
+                <td>{{ appareil.connectivite }}</td>
+                <td>{{ appareil.temperature }}</td>
+                <td>{{ appareil.volume }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
