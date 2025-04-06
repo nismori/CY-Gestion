@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import { ShootingStarsAndStarsBackgroundDemo } from "./background";
-import { NavbarLogedDemo } from "./NavBarLoged";
-
-export default function Profil() {
-  return (
-    <div className="relative min-h-screen bg-black-100">
-      <ShootingStarsAndStarsBackgroundDemo />
-      <NavbarLogedDemo />
-=======
 import React, { useState } from "react";
 
 function Profil() {
@@ -47,8 +36,8 @@ function Profil() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Consultez un profil avec son adresse mail</h1>
+    <div className="max-w-3xl p-6 mx-auto bg-white rounded-lg shadow-lg dark:bg-gray-800">
+      <h1 className="mb-6 text-2xl font-bold text-center text-gray-800 dark:text-white">Consultez un profil avec son adresse mail</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex items-center space-x-4">
@@ -65,17 +54,17 @@ function Profil() {
         
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full py-3 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Récupérer
         </button>
       </form>
 
-      {error && <p className="text-red-500 mt-4 text-center text-lg">{error}</p>}
+      {error && <p className="mt-4 text-lg text-center text-red-500">{error}</p>}
 
       {userData && (
-        <div className="mt-6 p-6 bg-gray-100 rounded-lg shadow-md dark:bg-gray-700">
-          <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Utilisateur trouvé :</h2>
+        <div className="p-6 mt-6 bg-gray-100 rounded-lg shadow-md dark:bg-gray-700">
+          <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-white">Utilisateur trouvé :</h2>
           <div className="space-y-3">
             <p className="text-lg text-red-600"><strong className="text-gray-700 dark:text-white">Email : </strong> {userData.email}</p>
             <p className="text-lg text-red-600"><strong className="text-gray-700 dark:text-white">Pseudo :</strong> {userData.pseudo}</p>
@@ -88,12 +77,8 @@ function Profil() {
           </div>
         </div>
       )}
->>>>>>> e17d97bd78557bb041f50899c43fe134d8b7aebb
     </div>
   );
 }
 
-<<<<<<< HEAD
-=======
 export default Profil;
->>>>>>> e17d97bd78557bb041f50899c43fe134d8b7aebb
