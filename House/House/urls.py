@@ -23,9 +23,11 @@ from Appareil.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',default),
+    path('profil/',ProfilView.as_view(), name="anything"),
     path('appareil/',AppareilView.as_view(), name="anything"),  
     path('', include('Profil.urls')),
     path('showProfil/', afficherProfil),
     path('showAppareil/', afficherAppareil),
+    path('api/get_user_by_email/', GetUserByEmailView.as_view(), name='get_user_by_email'),
     
 ]
