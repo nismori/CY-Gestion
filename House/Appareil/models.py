@@ -22,5 +22,3 @@ class Appareil(models.Model):
     connectivite = models.CharField(max_length=20,choices=CONNECTIVITE_CHOICES,default="error")
     temperature = models.IntegerField(validators=[MinValueValidator(0)],null=True,blank=True)
     volume = models.IntegerField(validators=[MinValueValidator(0)],null=True,blank=True)
-
-
