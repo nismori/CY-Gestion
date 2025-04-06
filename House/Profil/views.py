@@ -1,10 +1,23 @@
-from rest_framework import status
 from .models import *
 from .serializer import *
+from rest_framework import status,generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from django.shortcuts import *
+
+
+class ProfilView(generics.ListCreateAPIView):
+    queryset = Profil.objects.all()
+    serializer_class = ProfilSerializer
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset
+    
+    
+def afficherAppareil(request):
+    appareils = Profil.objects.all()
+    return render(request, 'appareils.html', {'appareils': appareils})
 
     
 class InscriptionView(APIView):

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
 function SetUserByEmail() {
-  
-  const [email, setEmail] = useState("");  // Email de l'utilisateur
-  const [prenom, setPrenom] = useState("");  // Nouveau prénom
-  const [nom, setNom] = useState("");  // Nouveau nom
-  const [pseudo, setPseudo] = useState("");  // Nouveau pseudo
-  const [mot_de_passe, setMotDePasse] = useState("");  // Nouveau mot de passe
-  const [message, setMessage] = useState("");  // Message de retour
+  const [email, setEmail] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [nom, setNom] = useState("");
+  const [pseudo, setPseudo] = useState("");
+  const [mot_de_passe, setMotDePasse] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Empêche le rechargement de la page
+    e.preventDefault();
 
+    // Nettoyer les données pour ne pas envoyer de champs vides
     const formData = {
       email,
       prenom,
@@ -20,23 +20,32 @@ function SetUserByEmail() {
       mot_de_passe,
     };
 
+    const cleanedData = Object.fromEntries(
+      Object.entries(formData).filter(([_, value]) => value.trim() !== "")
+    );
+
+    console.log("Formulaire envoyé :", cleanedData); // Debug
+
     try {
       const response = await fetch("http://127.0.0.1:8000/api/update_user_by_email/", {
-        method: "PUT",  // Utilisation de la méthode PUT pour la mise à jour
+        method: "POST", // plus stable en dev, change si besoin côté Django
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),  // Envoi des données modifiées
+        body: JSON.stringify(cleanedData),
       });
 
       if (response.ok) {
         const data = await response.json();
-        setMessage(data.message);  // Message de succès
+        console.log("Réponse OK :", data);
+        setMessage(data.message || "Mise à jour réussie !");
       } else {
         const errorData = await response.json();
-        setMessage(errorData.message);  // Message d'erreur
+        console.warn("Réponse erreur :", errorData);
+        setMessage(errorData.message || "Erreur lors de la mise à jour.");
       }
     } catch (error) {
+      console.error("Erreur réseau ou JSON :", error);
       setMessage("Une erreur s'est produite lors de la mise à jour.");
     }
   };
@@ -89,7 +98,7 @@ function SetUserByEmail() {
         <button type="submit">Mettre à jour</button>
       </form>
 
-      {message && <p>{message}</p>}  {/* Affichage du message de retour */}
+      {message && <p style={{ marginTop: "1rem", color: "blue" }}>{message}</p>}
     </div>
   );
 }
