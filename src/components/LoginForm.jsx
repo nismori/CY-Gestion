@@ -3,19 +3,21 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "../../utils/cn";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 export function LoginFormDemo() {
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const email = e.target.email.value;
     const mot_de_passe = e.target.password.value;
-  
+
     const credentials = {
       email: email,
       mot_de_passe: mot_de_passe,
     };
-  
+
     try {
       const response = await fetch("http://127.0.0.1:8000/login/", {
         method: "POST",
@@ -24,14 +26,15 @@ export function LoginFormDemo() {
         },
         body: JSON.stringify(credentials),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         console.log("Connecté :", data);
-        // tu peux stocker un token ici si le backend en retourne un
+        // Stocker un token ou les données utilisateur ici
         localStorage.setItem("user", JSON.stringify(data));
-        // Redirige ou met à jour l'état connecté
+        // Rediriger l'utilisateur vers la page loged après connexion réussie
+        navigate("/loged");
       } else {
         console.error("Erreur d'authentification :", data.detail || data.message);
       }
